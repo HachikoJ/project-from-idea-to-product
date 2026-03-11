@@ -1,44 +1,58 @@
-# project-from-idea-to-product
+# 🧭 project-from-idea-to-product
 
-> 一个面向真实项目交付的 Agent Skill。  
-> 它不是只负责分析需求，而是负责把一个模糊的软件 / 系统 / 后台 / 工具想法，推进成**可开发、可纠偏、可上线、可包装、可交付**的完整项目。
+<div align="center">
 
-<p align="center">
-  <a href="https://github.com/HachikoJ/project-from-idea-to-product">GitHub 仓库</a> ·
-  <a href="https://hachikoj.github.io/project-from-idea-to-product/">项目展示页</a>
-</p>
+**从想法到产品 · 运行指挥层 · 交付导向开发闭环**
 
----
+[![Skill](https://img.shields.io/badge/Agent%20Skill-Project%20Director-4f46e5)](#-项目定位)
+[![Mode](https://img.shields.io/badge/Mode-Delivery%20Driven-0ea5e9)](#-核心能力)
+[![Focus](https://img.shields.io/badge/Focus-Runtime%20Orchestration-10b981)](#-与普通项目规划-skill-的区别)
 
-## 中文 | English
+[项目定位](#-项目定位) • [核心能力](#-核心能力) • [使用方式](#-推荐使用方式) • [内置案例](#-内置案例) • [English](#english)
 
-- [中文说明](#中文说明)
-- [English](#english)
+</div>
 
 ---
 
-## 中文说明
+## ✨ 项目定位
 
-## 项目定位
+**project-from-idea-to-product** 是一个面向**真实项目交付**的 Agent Skill。  
+它不是只帮你分析需求，也不是只帮你生成几段代码，而是把一个模糊的软件 / 后台 / 系统 / 工具想法，持续推进成：
 
-`project-from-idea-to-product` 不是普通 prompt 集，也不是只会讲方法论的 skill。  
-它更接近一个：
+- 可定义
+- 可拆解
+- 可开发
+- 可纠偏
+- 可上线
+- 可包装
+- 可交付
 
-- **项目总控 skill**
-- **交付导演 skill**
-- **运行指挥层 skill**
+> 它更接近一个 **项目总控 skill / 交付导演 skill**，而不是普通 prompt 集。
 
-它解决的核心问题不是“写某一段代码”，而是：
+### 🔗 项目地址
 
-- 如何把一个模糊想法定义成真实项目
-- 如何收敛 MVP，而不是一开始就堆功能
-- 如何在开发过程中持续纠偏，而不是反复重构
-- 如何防止自己或 AI 深陷于局部细节
-- 如何把项目持续推到上线、文档、GitHub、教程、展示页这些真正的交付成果
+- **GitHub 仓库：** <https://github.com/HachikoJ/project-from-idea-to-product>
+- **项目展示页：** <https://hachikoj.github.io/project-from-idea-to-product/>
 
 ---
 
-## 核心能力
+## 🎯 这个项目解决什么问题
+
+很多 AI 项目做不出来，问题往往不是不会写代码，而是：
+
+- 想法没有被定义清楚
+- 需求没有被拆成系统
+- 一上来就堆功能
+- 做着做着陷进细节
+- 跑偏以后只会重构，不会精准纠偏
+- 本地能跑就误以为项目完成
+- 最后没有形成 GitHub、文档、教程、展示页这些真正可交付成果
+
+这个 skill 的目标，就是解决上面这一整条链路的问题。
+
+---
+
+## 🌟 核心能力
 
 ### 1. 项目定义
 把一句模糊需求收敛成：
@@ -59,17 +73,15 @@
 - 开发优先级
 
 ### 3. 运行指挥层
-这是和普通 skill 最大的区别。
-
-它会持续帮助判断：
+这是和普通 skill 最大的区别。它会持续帮助判断：
 - 当前处于哪个阶段
 - 当前唯一最高优先级任务是什么
 - 当前明确不要做什么
-- 当前任务的验收标准是什么
+- 当前任务验收标准是什么
 - 是否可以进入下一阶段
 
 ### 4. 外科手术式纠偏
-当项目跑偏时，优先：
+当项目跑偏时，默认优先：
 - 先判断问题层级
 - 再找根因
 - 做最小修改
@@ -88,20 +100,7 @@
 
 ---
 
-## 最适合什么项目
-
-- 内部工单系统
-- 内部审批系统
-- 管理后台
-- 售后 / 客服 / 跟进系统
-- 小团队业务工具
-- 工作流产品
-- 多角色协同系统
-- 需要上线、展示、交付的 AI 产品项目
-
----
-
-## 与普通项目规划 skill 的区别
+## 🧠 与普通项目规划 skill 的区别
 
 普通项目规划 skill 往往只会：
 - 帮你列需求
@@ -121,7 +120,26 @@
 
 ---
 
-## 目录结构
+## 🚀 推荐使用方式
+
+### 标准工作流
+1. 先让 skill 定义项目
+2. 再让 skill 判断当前阶段
+3. 让 skill 只输出一个当前最高优先级任务
+4. 由龙虾只按这一小块范围实现
+5. 再回到 skill 做验收与纠偏
+6. 通过后再进入下一阶段
+
+### 正确分工
+- **skill 负责：** 定方向、控范围、做验收、做纠偏、控阶段
+- **龙虾负责：** 实现当前任务、反馈结果、按要求回收范围
+
+详细说明见：
+- `references/how-to-use-this-skill.md`
+
+---
+
+## 📦 目录结构
 
 ```text
 project-from-idea-to-product/
@@ -147,26 +165,7 @@ project-from-idea-to-product/
 
 ---
 
-## 推荐使用方式
-
-### 标准工作流
-1. 先让 skill 定义项目
-2. 再让 skill 判断当前阶段
-3. 让 skill 只输出一个当前最高优先级任务
-4. 由龙虾只按这一小块范围实现
-5. 再回到 skill 做验收与纠偏
-6. 通过后再进入下一阶段
-
-### 正确分工
-- **skill 负责：** 定方向、控范围、做验收、做纠偏、控阶段
-- **龙虾负责：** 实现当前任务、反馈结果、按要求回收范围
-
-详细说明见：
-- `references/how-to-use-this-skill.md`
-
----
-
-## 内置案例
+## 🧪 内置案例
 
 ### 匿证案例
 - `references/anonyproof-case-study.md`
@@ -184,7 +183,7 @@ project-from-idea-to-product/
 
 ---
 
-## 当前验证状态
+## ✅ 当前验证状态
 
 已在实际对话中验证：
 - 从真实项目中抽取方法论
@@ -199,7 +198,7 @@ project-from-idea-to-product/
 
 ---
 
-## 一句话总结
+## 📌 一句话总结
 
 > 这不是一个只会分析需求的 skill，  
 > 而是一个帮助你和龙虾把项目真正做成、做完、做成交付成果的项目总控 skill。
@@ -208,7 +207,7 @@ project-from-idea-to-product/
 
 ## English
 
-`project-from-idea-to-product` is a delivery-oriented Agent Skill for turning vague software ideas into real, shippable projects.
+**project-from-idea-to-product** is a delivery-oriented Agent Skill for turning vague software ideas into real, shippable projects.
 
 It is not just a planning prompt pack. It adds:
 - runtime orchestration
@@ -217,6 +216,6 @@ It is not just a planning prompt pack. It adds:
 - acceptance and correction loops
 - delivery-oriented development flow
 
-Project links:
-- GitHub: `https://github.com/HachikoJ/project-from-idea-to-product`
-- Showcase: `https://hachikoj.github.io/project-from-idea-to-product/`
+Links:
+- GitHub: <https://github.com/HachikoJ/project-from-idea-to-product>
+- Showcase: <https://hachikoj.github.io/project-from-idea-to-product/>

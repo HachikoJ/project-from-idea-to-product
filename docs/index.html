@@ -1,253 +1,372 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>project-from-idea-to-product</title>
+  <title>project-from-idea-to-product | 从想法到产品的项目总控 skill</title>
+  <meta name="description" content="一个把模糊软件想法持续推进成可开发、可纠偏、可上线、可交付成果的项目总控 skill。" />
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --bg: #06101d;
-      --bg-2: #040914;
-      --panel: rgba(10, 19, 36, 0.88);
-      --panel-2: rgba(14, 26, 47, 0.94);
-      --line: rgba(111, 170, 255, 0.18);
-      --line-strong: rgba(111, 170, 255, 0.34);
-      --text: #eef4ff;
-      --muted: #9cb0ca;
-      --muted-2: #d8e6f7;
-      --accent: #7dd3fc;
-      --accent-2: #60a5fa;
-      --ok: #80f2c7;
-      --max: 1280px;
+      --bg: #020617;
+      --card: rgba(8, 14, 28, 0.9);
+      --border: rgba(148, 163, 184, 0.16);
+      --border-strong: rgba(96, 165, 250, 0.34);
+      --text: #e8f1ff;
+      --muted: #94a3b8;
+      --muted-2: #dbe7f8;
+      --primary: #2563eb;
+      --primary-2: #7c3aed;
+      --cyan: #22d3ee;
+      --shadow: 0 24px 60px rgba(2, 6, 23, 0.42);
     }
-    * { box-sizing: border-box; }
     body {
-      margin: 0;
-      font-family: Inter, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, sans-serif;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      line-height: 1.6;
       color: var(--text);
       background:
-        radial-gradient(circle at 20% 0%, rgba(96,165,250,.12), transparent 28%),
-        radial-gradient(circle at 100% 18%, rgba(125,211,252,.08), transparent 30%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+        radial-gradient(circle at 14% 10%, rgba(37,99,235,.18), transparent 22%),
+        radial-gradient(circle at 88% 12%, rgba(124,58,237,.16), transparent 24%),
+        linear-gradient(180deg, #020617 0%, #07111f 34%, #0b1528 64%, #020617 100%);
+      min-height: 100vh;
     }
-    .wrap {
-      width: min(var(--max), calc(100vw - 40px));
-      margin: 0 auto;
-      padding: 36px 0 64px;
-    }
-    .hero, .panel {
-      border-radius: 24px;
-      border: 1px solid var(--line);
-      background: var(--panel);
-      box-shadow: 0 22px 64px rgba(0,0,0,.35);
-    }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
     .hero {
-      padding: 32px;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      padding: 48px 0 64px;
+    }
+    .hero-grid {
+      width: 100%;
       display: grid;
-      grid-template-columns: 1.35fr .85fr;
-      gap: 24px;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 26px;
+      align-items: center;
     }
     .eyebrow {
-      color: var(--accent);
-      font-size: 12px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(96,165,250,.18);
+      background: rgba(15,23,42,.48);
+      color: #c9dcff;
+      font-size: .88rem;
+      margin-bottom: 18px;
+    }
+    .product-name {
+      font-size: clamp(3.7rem, 8vw, 6.4rem);
+      line-height: .92;
+      font-weight: 900;
+      letter-spacing: -0.07em;
+      margin-bottom: 14px;
+    }
+    .product-tagline {
+      font-size: clamp(1.08rem, 2vw, 1.36rem);
+      color: #dbe8ff;
       margin-bottom: 12px;
+      font-weight: 700;
     }
-    h1 {
-      margin: 0 0 14px;
-      font-size: clamp(42px, 6vw, 78px);
-      line-height: .95;
-      letter-spacing: -.05em;
-    }
-    .lead {
-      margin: 0;
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.8;
-      max-width: 760px;
-    }
-    .quote {
-      margin-top: 18px;
-      padding: 16px 18px;
-      border-radius: 16px;
-      border: 1px solid rgba(125,211,252,.14);
-      background: rgba(10, 22, 40, .76);
+    .hero-copy p {
+      font-size: 1rem;
       color: var(--muted-2);
-      line-height: 1.8;
-      font-size: 15px;
+      margin-bottom: 12px;
+      max-width: 620px;
+      line-height: 1.78;
     }
-    .links {
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+    }
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
+      box-shadow: 0 16px 38px rgba(37,99,235,.26);
+    }
+    .btn-secondary {
+      color: #e2e8f0;
+      background: rgba(255,255,255,.04);
+      border-color: rgba(148,163,184,.16);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .hero-meta {
       margin-top: 18px;
-      display: grid;
+      display: flex;
+      flex-wrap: wrap;
       gap: 10px;
     }
-    .link-card {
-      padding: 14px 16px;
-      border-radius: 14px;
-      border: 1px solid var(--line-strong);
-      background: rgba(8, 18, 34, .84);
-      color: var(--muted-2);
-      font-size: 14px;
-      line-height: 1.7;
-      word-break: break-all;
+    .hero-chip {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(148,163,184,.14);
+      color: #d7e3f4;
+      font-size: .88rem;
     }
-    .link-card b {
-      display: block;
-      color: var(--accent);
-      margin-bottom: 4px;
-      font-size: 12px;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-    .side {
+    .hero-side {
       display: grid;
       gap: 14px;
-      align-content: start;
     }
-    .stat {
-      padding: 16px 18px;
-      border-radius: 16px;
-      border: 1px solid rgba(125,211,252,.14);
-      background: var(--panel-2);
+    .card {
+      background: linear-gradient(180deg, rgba(10,16,30,.94), rgba(5,9,20,.92));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 22px;
     }
-    .stat b {
-      display: block;
-      color: var(--muted);
-      margin-bottom: 8px;
-      font-size: 12px;
-      letter-spacing: .16em;
+    .card h3 {
+      font-size: .78rem;
       text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--cyan);
+      margin-bottom: 10px;
     }
-    .stat span {
-      color: var(--text);
-      font-size: 19px;
-      font-weight: 700;
-      line-height: 1.5;
+    .card p {
+      color: var(--muted-2);
+      line-height: 1.74;
+      font-size: .97rem;
+    }
+    .section {
+      padding: 26px 0;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 18px;
     }
     .section-title {
-      margin: 30px 0 14px;
-      color: var(--accent);
-      font-size: 12px;
-      letter-spacing: .22em;
-      text-transform: uppercase;
+      font-size: 1.9rem;
+      letter-spacing: -0.03em;
     }
-    .grid {
+    .section-desc {
+      color: var(--muted);
+      max-width: 620px;
+      line-height: 1.72;
+    }
+    .feature-grid,
+    .summary-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
     }
-    .panel {
+    .feature {
+      background: rgba(8, 14, 28, 0.88);
+      border: 1px solid var(--border);
+      border-radius: 20px;
       padding: 22px;
+      box-shadow: var(--shadow);
     }
-    h2 {
-      margin: 0 0 10px;
-      font-size: 20px;
+    .feature h4 {
+      font-size: 1.08rem;
+      margin-bottom: 10px;
     }
-    p, li {
+    .feature p, .feature li {
       color: var(--muted);
-      line-height: 1.75;
-      font-size: 15px;
-      margin: 0;
+      line-height: 1.72;
+      font-size: .96rem;
     }
-    ul {
-      margin: 0;
-      padding-left: 18px;
+    .feature ul { padding-left: 18px; }
+    .workflow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .step {
+      background: rgba(8, 14, 28, 0.88);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+    .step b {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: var(--cyan);
+      font-size: .82rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .step p {
+      color: var(--muted-2);
+      line-height: 1.68;
+      font-size: .95rem;
+    }
+    .repo-box {
+      margin-top: 18px;
+      background: rgba(8, 14, 28, 0.88);
+      border: 1px solid var(--border-strong);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .repo-box p {
+      color: var(--muted-2);
+      margin-bottom: 8px;
+      word-break: break-all;
     }
     .footer {
-      margin-top: 14px;
-      color: #87a1bf;
-      font-size: 13px;
-      line-height: 1.7;
+      padding: 26px 0 54px;
+      color: var(--muted);
+      font-size: .94rem;
+      text-align: center;
     }
-    @media (max-width: 980px) {
-      .hero { grid-template-columns: 1fr; }
-      .grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 640px) {
-      .wrap { width: min(100%, calc(100vw - 24px)); padding-top: 20px; }
-      .hero, .panel { border-radius: 20px; }
-      .hero { padding: 22px; }
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .feature-grid,
+      .summary-grid,
+      .workflow { grid-template-columns: 1fr; }
+      .section-head { flex-direction: column; align-items: flex-start; }
+      .hero { min-height: auto; padding-top: 30px; }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <section class="hero">
-      <div>
-        <div class="eyebrow">Project Director Skill / Runtime Control Layer</div>
-        <h1>project-from-idea-to-product</h1>
-        <p class="lead">
-          一个面向真实项目交付的 Agent Skill。它不是只负责分析需求，而是负责把模糊的软件 / 系统 / 后台 / 工具想法，持续推进成可开发、可纠偏、可上线、可包装、可交付的完整项目。
-        </p>
-        <div class="quote">
-          这不是一个普通 prompt 集，也不是一个只会讲方法论的 skill。它更接近一个项目总控器：负责定阶段、控范围、防跑偏、做验收，并持续把龙虾拉回交付主线。
-        </div>
-        <div class="links">
-          <div class="link-card">
-            <b>GitHub</b>
-            https://github.com/HachikoJ/project-from-idea-to-product
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Project Director Skill · Runtime Control Layer · Delivery Driven</div>
+          <div class="product-name">project-from-idea-to-product</div>
+          <div class="product-tagline">从想法到产品的项目总控 skill</div>
+          <p>
+            一个面向真实项目交付的 Agent Skill。它不是只负责分析需求，而是负责把模糊的软件 / 系统 / 后台 / 工具想法，持续推进成可开发、可纠偏、可上线、可包装、可交付的完整项目。
+          </p>
+          <p>
+            它的核心价值不是“多生成一点代码”，而是持续控制项目节奏：先定义、再拆解、再按阶段推进、边开发边纠偏、避免深陷细节，最后把项目真正推到交付成果。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://github.com/HachikoJ/project-from-idea-to-product">查看 GitHub 仓库</a>
+            <a class="btn btn-secondary" href="https://raw.githubusercontent.com/HachikoJ/project-from-idea-to-product/main/README.md">查看 README</a>
           </div>
-          <div class="link-card">
-            <b>Pages</b>
-            https://hachikoj.github.io/project-from-idea-to-product/
+          <div class="hero-meta">
+            <span class="hero-chip">项目定义</span>
+            <span class="hero-chip">运行指挥层</span>
+            <span class="hero-chip">外科手术式纠偏</span>
+            <span class="hero-chip">交付导向开发闭环</span>
+          </div>
+        </div>
+        <div class="hero-side">
+          <div class="card">
+            <h3>项目定位</h3>
+            <p>不是普通 prompt 集，也不是只会讲方法论的 skill，而是一个帮助你和龙虾把项目真正做成的项目总控器。</p>
+          </div>
+          <div class="card">
+            <h3>核心循环</h3>
+            <p>任务 → 实现 → 验收 → 纠偏 → 下一任务</p>
+          </div>
+          <div class="card">
+            <h3>适配项目</h3>
+            <p>工单系统、后台产品、内部工具、工作流系统、多角色协同项目，以及所有需要最终上线与交付的 AI 产品项目。</p>
           </div>
         </div>
       </div>
-      <div class="side">
-        <div class="stat"><b>项目定位</b><span>从想法到产品的项目总控 skill</span></div>
-        <div class="stat"><b>核心循环</b><span>任务 → 实现 → 验收 → 纠偏 → 下一任务</span></div>
-        <div class="stat"><b>关键能力</b><span>运行指挥层 / 防深陷细节 / 交付导向开发闭环</span></div>
-        <div class="stat"><b>适配项目</b><span>工单系统、后台产品、内部工具、工作流系统、多角色协同项目</span></div>
+      <div class="repo-box">
+        <p><strong>GitHub 仓库：</strong> https://github.com/HachikoJ/project-from-idea-to-product</p>
+        <p><strong>项目展示页：</strong> https://hachikoj.github.io/project-from-idea-to-product/</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <div class="section-title">核心模块</div>
-    <section class="grid">
-      <article class="panel">
-        <h2>方法层</h2>
-        <p>负责把一个模糊想法定义成真实项目，包括角色、主链路、MVP、需求结构与阶段边界。</p>
-      </article>
-      <article class="panel">
-        <h2>指挥层</h2>
-        <p>负责判断当前阶段，压缩成一个当前最高优先级任务，明确当前不要做什么，并控制是否进入下一阶段。</p>
-      </article>
-      <article class="panel">
-        <h2>交付层</h2>
-        <p>负责把项目从“能跑”继续推进到部署、GitHub、README、教程、展示页等完整成果形态。</p>
-      </article>
-    </section>
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-title">核心能力</div>
+          <div class="section-desc">把“需求分析”“开发推进”“过程纠偏”“上线包装”拉到同一条项目交付主线上，而不是分散成几份互不相干的说明。</div>
+        </div>
+      </div>
+      <div class="feature-grid">
+        <div class="feature">
+          <h4>项目定义</h4>
+          <p>帮助用户明确目标用户、系统角色、核心场景、主链路、MVP 和暂不做什么。</p>
+        </div>
+        <div class="feature">
+          <h4>需求拆解</h4>
+          <p>把模糊想法拆成页面清单、模块结构、状态流转、角色关系与开发优先级。</p>
+        </div>
+        <div class="feature">
+          <h4>运行指挥层</h4>
+          <p>持续判断当前阶段，只给一个当前最高优先级任务，并明确当前不要做什么。</p>
+        </div>
+        <div class="feature">
+          <h4>外科手术式纠偏</h4>
+          <p>默认优先最小修改，不轻易重构，不顺手改 unrelated 模块，明确修复完成标准。</p>
+        </div>
+        <div class="feature">
+          <h4>防深陷细节</h4>
+          <p>及时识别非阻塞优化、未来功能和局部沉迷，把注意力拉回当前阶段目标与交付主线。</p>
+        </div>
+        <div class="feature">
+          <h4>交付导向开发闭环</h4>
+          <p>让项目不断朝部署、GitHub、README、教程、展示页这些真实成果推进，而不是停在本地 demo。</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <div class="section-title">为什么它不是普通 skill</div>
-    <section class="grid">
-      <article class="panel">
-        <h2>不是只会分析</h2>
-        <p>它不是分析完就结束，而是继续参与任务下发、验收判断、跑偏纠正与阶段切换控制。</p>
-      </article>
-      <article class="panel">
-        <h2>不是只会列需求</h2>
-        <p>它强调的是“先做什么、先不做什么、什么时候收手进入下一阶段”，而不是把所有功能都提前列满。</p>
-      </article>
-      <article class="panel">
-        <h2>不是只会讲方法论</h2>
-        <p>它已经内置《匿证》案例抽象与“内部售后工单系统”试跑样本，证明它能迁移到新项目题目上工作。</p>
-      </article>
-    </section>
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-title">运行工作流</div>
+          <div class="section-desc">不是一次分析完就结束，而是作为项目控制层持续参与每一轮推进。</div>
+        </div>
+      </div>
+      <div class="workflow">
+        <div class="step"><b>Step 1</b><p>判断当前项目所处阶段。</p></div>
+        <div class="step"><b>Step 2</b><p>只下发当前唯一最高优先级任务。</p></div>
+        <div class="step"><b>Step 3</b><p>由龙虾按当前范围执行实现。</p></div>
+        <div class="step"><b>Step 4</b><p>回到 skill 做验收与纠偏。</p></div>
+        <div class="step"><b>Step 5</b><p>通过后再进入下一阶段与下一任务。</p></div>
+      </div>
+    </div>
+  </section>
 
-    <div class="section-title">核心能力清单</div>
-    <section class="panel">
-      <ul>
-        <li>项目定义与 MVP 收敛</li>
-        <li>需求拆解与结构化推进</li>
-        <li>运行指挥层与阶段控制</li>
-        <li>外科手术式纠偏</li>
-        <li>防深陷细节控制机制</li>
-        <li>交付导向开发闭环</li>
-        <li>部署与域名 / 子路径意识</li>
-        <li>GitHub / README / 教程 / 展示页交付意识</li>
-      </ul>
-      <div class="footer">这是一个以“把项目真正做成”为目标的 skill 包，而不是一组静态的项目提示词。</div>
-    </section>
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-title">为什么它不是普通项目规划 skill</div>
+          <div class="section-desc">普通 skill 多半停在“帮你列需求”，这个项目额外补上了控制项目节奏的关键一层。</div>
+        </div>
+      </div>
+      <div class="summary-grid">
+        <div class="feature">
+          <h4>不是只会列需求</h4>
+          <p>它更强调先做什么、先不做什么、什么时候停手进入下一阶段。</p>
+        </div>
+        <div class="feature">
+          <h4>不是只会讲方法论</h4>
+          <p>它已经内置《匿证》案例抽象，以及“内部售后工单系统”迁移试跑案例。</p>
+        </div>
+        <div class="feature">
+          <h4>不是只会推生成</h4>
+          <p>它会持续帮助判断当前任务是否真的通过验收，并防止项目被细节拖垮。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    project-from-idea-to-product · 一个帮助你和龙虾把项目真正做成、做完、做成交付成果的项目总控 skill
   </div>
 </body>
 </html>
