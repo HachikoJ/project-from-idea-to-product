@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>project-from-idea-to-product | 从想法到产品的项目总控 skill</title>
-  <meta name="description" content="一个把模糊软件想法持续推进成可开发、可纠偏、可上线、可交付成果的项目总控 skill。" />
+  <meta name="description" content="一个把模糊软件想法持续推进成可开发、可纠偏、可上线、可包装、可交付成果的项目总控 skill。" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
@@ -137,11 +137,12 @@
       color: var(--cyan);
       margin-bottom: 10px;
     }
-    .card p {
+    .card p, .card li {
       color: var(--muted-2);
       line-height: 1.74;
       font-size: .97rem;
     }
+    .card ul { padding-left: 18px; }
     .section {
       padding: 26px 0;
     }
@@ -258,29 +259,35 @@
           </div>
           <div class="hero-meta">
             <span class="hero-chip">项目定义</span>
+            <span class="hero-chip">需求拆解</span>
             <span class="hero-chip">运行指挥层</span>
             <span class="hero-chip">外科手术式纠偏</span>
-            <span class="hero-chip">交付导向开发闭环</span>
+            <span class="hero-chip">交付导向闭环</span>
           </div>
         </div>
         <div class="hero-side">
           <div class="card">
-            <h3>项目定位</h3>
-            <p>不是普通 prompt 集，也不是只会讲方法论的 skill，而是一个帮助你和龙虾把项目真正做成的项目总控器。</p>
+            <h3>这个 skill 在做什么</h3>
+            <p>
+              帮你把“我想做个系统 / 平台 / 后台 / 工具”的模糊想法，变成真正有节奏、有阶段、有边界、有验收、有交付结果的真实项目，而不是做成半截废稿。
+            </p>
           </div>
           <div class="card">
-            <h3>核心循环</h3>
-            <p>任务 → 实现 → 验收 → 纠偏 → 下一任务</p>
+            <h3>它和普通项目规划的区别</h3>
+            <ul>
+              <li>不只列需求，而是持续判断当前阶段</li>
+              <li>不只说该做什么，还明确当前不要做什么</li>
+              <li>不只写功能清单，还会做验收和纠偏</li>
+              <li>目标不是“产出更多”，而是“稳步交付”</li>
+            </ul>
           </div>
           <div class="card">
-            <h3>适配项目</h3>
-            <p>工单系统、后台产品、内部工具、工作流系统、多角色协同项目，以及所有需要最终上线与交付的 AI 产品项目。</p>
+            <h3>当前验证来源</h3>
+            <p>
+              该方法已从真实项目 AnonyProof 中抽取经验，并在新的项目场景中做迁移试跑，验证其不是一次性 prompt，而是一套可复用的项目控制方法。
+            </p>
           </div>
         </div>
-      </div>
-      <div class="repo-box">
-        <p><strong>GitHub 仓库：</strong> https://github.com/HachikoJ/project-from-idea-to-product</p>
-        <p><strong>项目展示页：</strong> https://hachikoj.github.io/project-from-idea-to-product/</p>
       </div>
     </div>
   </section>
@@ -290,33 +297,35 @@
       <div class="section-head">
         <div>
           <div class="section-title">核心能力</div>
-          <div class="section-desc">把“需求分析”“开发推进”“过程纠偏”“上线包装”拉到同一条项目交付主线上，而不是分散成几份互不相干的说明。</div>
+        </div>
+        <div class="section-desc">
+          它补上的不是更多“创意输出”，而是项目从模糊想法走向实际交付过程中最容易缺失的那层控制能力。
         </div>
       </div>
       <div class="feature-grid">
         <div class="feature">
-          <h4>项目定义</h4>
-          <p>帮助用户明确目标用户、系统角色、核心场景、主链路、MVP 和暂不做什么。</p>
+          <h4>🧭 项目定义</h4>
+          <p>把一句模糊需求收敛成目标用户、系统角色、核心场景、主链路、MVP 与明确边界。</p>
         </div>
         <div class="feature">
-          <h4>需求拆解</h4>
-          <p>把模糊想法拆成页面清单、模块结构、状态流转、角色关系与开发优先级。</p>
+          <h4>🧱 需求拆解</h4>
+          <p>把项目拆成页面、模块、状态流转、角色关系、数据对象意识与开发优先级。</p>
         </div>
         <div class="feature">
-          <h4>运行指挥层</h4>
-          <p>持续判断当前阶段，只给一个当前最高优先级任务，并明确当前不要做什么。</p>
+          <h4>🎛️ 运行指挥层</h4>
+          <p>持续判断当前阶段、唯一最高优先级任务、验收标准，以及此刻明确不要做什么。</p>
         </div>
         <div class="feature">
-          <h4>外科手术式纠偏</h4>
-          <p>默认优先最小修改，不轻易重构，不顺手改 unrelated 模块，明确修复完成标准。</p>
+          <h4>🩺 外科手术式纠偏</h4>
+          <p>项目跑偏时先做问题分层，再找根因，最后做最小修改，而不是直接大重构。</p>
         </div>
         <div class="feature">
-          <h4>防深陷细节</h4>
-          <p>及时识别非阻塞优化、未来功能和局部沉迷，把注意力拉回当前阶段目标与交付主线。</p>
+          <h4>✅ 验收闭环</h4>
+          <p>不是“代码写完就算完”，而是判断当前阶段目标是否真正达成，再决定是否推进。</p>
         </div>
         <div class="feature">
-          <h4>交付导向开发闭环</h4>
-          <p>让项目不断朝部署、GitHub、README、教程、展示页这些真实成果推进，而不是停在本地 demo。</p>
+          <h4>🚀 交付导向</h4>
+          <p>目标不是停留在本地能跑，而是推动到部署、包装、文档、展示页与真实交付资产。</p>
         </div>
       </div>
     </div>
@@ -326,16 +335,33 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <div class="section-title">运行工作流</div>
-          <div class="section-desc">不是一次分析完就结束，而是作为项目控制层持续参与每一轮推进。</div>
+          <div class="section-title">方法论框架</div>
+        </div>
+        <div class="section-desc">
+          一套从定义到上线的项目推进框架，重点不是“想得更全”，而是“推进得更稳”。
         </div>
       </div>
       <div class="workflow">
-        <div class="step"><b>Step 1</b><p>判断当前项目所处阶段。</p></div>
-        <div class="step"><b>Step 2</b><p>只下发当前唯一最高优先级任务。</p></div>
-        <div class="step"><b>Step 3</b><p>由龙虾按当前范围执行实现。</p></div>
-        <div class="step"><b>Step 4</b><p>回到 skill 做验收与纠偏。</p></div>
-        <div class="step"><b>Step 5</b><p>通过后再进入下一阶段与下一任务。</p></div>
+        <div class="step">
+          <b>Phase 1</b>
+          <p>项目定义：收敛模糊想法，明确用户、场景、边界与 MVP。</p>
+        </div>
+        <div class="step">
+          <b>Phase 2</b>
+          <p>需求拆解：拆模块、拆页面、拆角色、拆状态流转。</p>
+        </div>
+        <div class="step">
+          <b>Phase 3</b>
+          <p>阶段推进：每次只推进当前最高优先级任务，避免铺开失控。</p>
+        </div>
+        <div class="step">
+          <b>Phase 4</b>
+          <p>验收闭环：检查当前阶段是否真实完成，而不是表面完成。</p>
+        </div>
+        <div class="step">
+          <b>Phase 5/6</b>
+          <p>纠偏与交付：最小修正偏差，并把项目推进到可上线、可展示、可交付。</p>
+        </div>
       </div>
     </div>
   </section>
@@ -344,29 +370,37 @@
     <div class="container">
       <div class="section-head">
         <div>
-          <div class="section-title">为什么它不是普通项目规划 skill</div>
-          <div class="section-desc">普通 skill 多半停在“帮你列需求”，这个项目额外补上了控制项目节奏的关键一层。</div>
+          <div class="section-title">验证案例</div>
+        </div>
+        <div class="section-desc">
+          这个 skill 不是空想出来的。它来自真实项目实践，并已经开始向新项目题目迁移验证。
         </div>
       </div>
       <div class="summary-grid">
         <div class="feature">
-          <h4>不是只会列需求</h4>
-          <p>它更强调先做什么、先不做什么、什么时候停手进入下一阶段。</p>
+          <h4>🔒 AnonyProof</h4>
+          <p>从匿名反馈系统的真实构建、部署、包装与纠偏过程中，抽取出可复用的方法论与控制逻辑。</p>
         </div>
         <div class="feature">
-          <h4>不是只会讲方法论</h4>
-          <p>它已经内置《匿证》案例抽象，以及“内部售后工单系统”迁移试跑案例。</p>
+          <h4>🧾 内部售后工单系统</h4>
+          <p>用新的业务题目验证该 skill 是否具备迁移能力，而不是只适用于单一项目。</p>
         </div>
         <div class="feature">
-          <h4>不是只会推生成</h4>
-          <p>它会持续帮助判断当前任务是否真的通过验收，并防止项目被细节拖垮。</p>
+          <h4>🧠 方法资产化</h4>
+          <p>把原本只存在于对话和实战中的经验，整理成 references 文档，变成真正可复用的资产。</p>
         </div>
+      </div>
+
+      <div class="repo-box">
+        <p><strong>GitHub：</strong> https://github.com/HachikoJ/project-from-idea-to-product</p>
+        <p><strong>Showcase：</strong> https://hachikoj.github.io/project-from-idea-to-product/</p>
+        <p><strong>适合场景：</strong> 后台 / 平台 / 管理系统 / 工具类产品 / 内部业务系统 / AI 辅助真实交付流程</p>
       </div>
     </div>
   </section>
 
   <div class="footer">
-    project-from-idea-to-product · 一个帮助你和龙虾把项目真正做成、做完、做成交付成果的项目总控 skill
+    Made with focus, structure and delivery discipline · by Wilson
   </div>
 </body>
 </html>
